@@ -40,15 +40,13 @@
 	<link href="./files/oneui.css" rel="stylesheet">
 	<link rel="shortcut icon" type="image/x-icon" href="./files/favicon.ico">
 	<script src="./files/layui.all.js"></script><link id="layuicss-laydate" rel="stylesheet" href="./files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="./files/code.css" media="all">
-	<script>
-
-	</script>
+		</script>
 </head>
 
 <body>
 	<header class="site-header">
 		<nav class="nav_jsxs">
-			<span style="float: left;"><a class="logo_jsxs" 
+			<span style="float: left;"><a class="logo_jsxs" href="/"></a></span>
 <nav class="nav_jsxs">
 			<span style="float: left;"><a class="logo_jsxs" href=""></a></span>
 			<a href="../">首页</a>
@@ -59,9 +57,69 @@
 		<div class="box-text">
 			<h1>刘总数据-工具箱</h1>
 			<p>稳定、快速、免费<br>
+</style>
+</head>
+<body>
+<div class="clock">当前时间: <span id="time"></span></div>
+<div class="countdown">距离新年还有: <span id="newYearCountdown"></span></div>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const nextYear = (now.getMonth() === 11 && now.getDate() > 31) ? year + 1 : year;
+    const newYearTime = new Date(`January 1, ${nextYear + 1} 00:00:00`);
+    const diff = newYearTime - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('newYearCountdown').textContent = `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+  }
+
+  setInterval(updateClock, 1000);
+  setInterval(updateCountdown, 1000);
+
+  updateClock(); // 初始显示时间
+  updateCountdown(); // 初始显示倒计时
+</script>
 								<span class="package-amount">BY:刘总 创建于2024年4月26日
 				</span>
-							</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日一言</title>
+</head>
+<body>
+    <div id="daily-quote">
+        <p id="quote-text">正在加载每日一言，可能你访问过多被短暂拉黑...</p>
+    </div>
+
+    <script>
+        // 使用 JavaScript 获取每日一言
+        fetch('https://v1.hitokoto.cn/')
+            .then(response => response.json())
+            .then(data => {
+                const quoteElement = document.getElementById('quote-text');
+                quoteElement.textContent = data.hitokoto;
+            })
+            .catch(error => {
+                console.error('获取每日一言时出错：', error);
+            });
+    </script>
+						</p>
 <div class="search-wraper" role="search">
 				<div class="form-group">
 					<input class="form-control search clearable" placeholder="搜索工具如：青年大学习" autocomplete="off" autofocus="" tabindex="0" autocorrect="off" autocapitalize="off" v-model="search" spellcheck="false" id="api-search">
