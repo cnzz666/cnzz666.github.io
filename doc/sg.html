@@ -373,3 +373,56 @@ BY刘总 建设于2024/4/26 更新于2024/4/26
 	</div> <!-- sidebar -->
 </div> <!-- col-md-3 -->
         <span>© 2024-2024 刘总工具箱-版权所有</span>
+    <script>
+        // 检测开发者工具是否打开
+        const checkDebugger = () => {
+            const threshold = 160; // 阈值，可根据实际情况调整
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                // 清空页面内容
+                document.body.innerHTML = '';
+
+                // 显示警告信息
+                const warning = document.createElement('p');
+                warning.classList.add('warning');
+                warning.textContent = '请勿打开开发者工具，此页面已阻止！刷新后重新检测。';
+                document.body.appendChild(warning);
+            }
+        }
+
+        // 页面加载时检测开发者工具
+        checkDebugger();
+    </script>
+  <script>
+        // 检测开发者工具是否打开
+        const onDebuggerDetected = () => {
+            document.body.innerHTML = ''; // 清空页面内容
+            document.write("请勿打开开发者工具，此页面已阻止！刷新后重新检测。"); // 显示警告信息
+        }
+
+        // 检测开发者工具是否打开
+        setInterval(() => {
+            if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+                onDebuggerDetected();
+            }
+        }, 1000);
+    </script>
+    <script>
+        document.oncontextmenu = function() {
+            return false;
+        };
+        document.onmousedown = function(e) {
+            if (e.button === 2) {
+                return false;
+            }
+        };
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 117)) {
+                return false;
+            }
+        };
+        document.onselectstart = function() {
+            return false;
+        };
+    </script>
+</body>
+</html>
