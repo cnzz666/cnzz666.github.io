@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>内部员工数据查询系统</title>
+    <title>Login</title>
+    <style>
+        /* 样式部分 */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h2>内部员工登录系统</h2>
-无敌加密混淆，耶稣来了都解不开！<br>
-仅供数据查询，本网站不对外开放！<br>
-    <form id="loginForm">
-        <label for="name">员工编号:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="password">员工密码:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="登录">
-    </form>
+    <div class="container">
+        <form id="loginForm" action="/login" method="post">
+            <div class="form-group">
+                <label for="username">员工编号:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">账号密码:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <input type="button" id="loginBtn" value="登录查询系统">
+        </form>
+        <div id="loginArea" style="display: block;">
+            <div id="userInfo" style="display: none;">
+        </form>
+    </div>
+
     <script src="login.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-
-
+</body>
+</html>
