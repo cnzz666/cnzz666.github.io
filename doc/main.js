@@ -3111,7 +3111,7 @@ changeScene("loadsave menu")})
 Button.add(width/2,height/2+35,400,40,"BY刘总 单机版MC","main menu",()=>{initMultiplayerMenu()
 changeScene("multiplayer menu")},()=>!location.href.startsWith("https://willard.fun"),"BY刘总 单机版MC")
 Button.add(width/2,height/2+90,400,40,"设置","main menu",()=>changeScene("options"))
-Button.add(width/2,135,300,40,["世界类型: 正常地形","World Type: 平坦地形"],"creation menu",r=>superflat=r==="World Type: Superflat")
+Button.add(width/2,135,300,40,["世界类型: 正常地形","世界类型: 平坦地形"],"creation menu",r=>superflat=r==="World Type: Superflat")
 Button.add(width/2,185,300,40,["树木: 开","树木: 关"],"creation menu",r=>trees=r==="Trees: On",function(){if(superflat){this.index=1
 trees=false}
 return superflat})
