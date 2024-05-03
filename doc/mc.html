@@ -29,6 +29,30 @@
       })
     })
   })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+    // 检测设备类型
+    const detectDevice = () => {
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        return isMobile ? 'mobile' : 'desktop';
+    }
+
+    // 显示对应的弹窗信息和跳转
+    const showPopup = () => {
+        const deviceType = detectDevice();
+        if (deviceType === 'mobile') {
+            // 手机端弹窗和跳转
+            alert("检测到你是手机端，对此网站的MC不适配，正在跳转到适配源！");
+            window.location.href = "https://cnzz666.github.io/doc/mczx1.html";
+        } else {
+            // 电脑端弹窗
+            alert("检测到你是电脑端，如果你是第一次访问，请耐心等待加载MC！");
+        }
+    }
+
+    // 页面加载时显示弹窗
+    showPopup();
+</script>
+
 	
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
