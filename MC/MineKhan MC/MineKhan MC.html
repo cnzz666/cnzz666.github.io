@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Play creative mode Minecraft right from your browser!">
+<meta name="keywords" content="Khan Academy, Programs, Search">
+<meta property="og:title" content="MineKhan" />
+<meta property="og:description" content="Play creative mode Minecraft right from your browser!" />
+<meta property="og:image" content="https://www.khanacademy.org/computer-programming/minekhan/5647155001376768/5308848032661504.png" />
+<title>单机网页版MC||BY刘总</title>
+
+<link rel="preload" href="https://willard.fun/fonts/VT323.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="shortcut icon" type="image/ico" href="https://willard.fun/assets/minekhan.ico">
+</head>
+<body>
+<div id="background-text">
+</div>
+<canvas id="overlay" tabindex="0" width="600" height="600" style="position: absolute; top: 0px; left: 0px"></canvas>
+<input type="text" id="savebox" class="hidden" spellcheck="false" style="position: absolute; top: 10px; left: 10px; z-index: 1;">
+<input type="text" id="boxcentertop" class="hidden" spellcheck="false">
+<div id="quota" class="hidden"></div>
+<div id="onhover" class="hidden"></div>
+<div id="chat" class="hidden"></div>
+<input id="chatbar" class="hidden" list="commands">
+<datalist id="commands">
+<option>/ban</option>
+<option>/online</option>
+</datalist>
+<p id="savedirections" class="hidden" style="position: absolute; top: 40px; left: 10px; z-index: 1; background-color: rgba(255, 255, 255, 0.3);">
+要保存你的世界, 请复制.粘贴框中的文本<br>
+复制/粘贴到第 190 行的代码中。<br>
+var loadString = “你的代码在这里”;<br>
+然后保存为html代码。
+</p>
+<div class="world-select hidden" id="worlds"></div>
+<p id="message" class="hidden" style="position: absolute; top: 10px; right: 10px; z-index: 1; text-align: right; background-color: rgba(255, 255, 255, 0.3);"></p>
+<script>
+		// Code edits will erase the world.
+		// Place save code here to load your world. Make extra sure you got it copied so you don't paste in the wrong thing and delete your world on accident lol
+		window.loadString = ""
+	</script>
+<script defer src="main1.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vedd3670a3b1c4e178fdfb0cc912d969e1713874337387" integrity="sha512-EzCudv2gYygrCcVhu65FkAxclf3mYM6BCwiGUm6BEuLzSb5ulVhgokzCZED7yMIkzYVg65mxfIBNdNra5ZFNyQ==" data-cf-beacon='{"rayId":"87debd9dbe85f93d","r":1,"version":"2024.4.1","token":"3c9953b0a5e54aef93d172f8a1dd2682"}' crossorigin="anonymous"></script>
+</body>
+</html>
