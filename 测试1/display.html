@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>显示用户信息</title>
+</head>
+<body>
+    <h2>已保存的用户名和密码：</h2>
+    <pre>
+<?php
+// 读取文件内容并显示
+$filename = 'users.txt';
+if (file_exists($filename)) {
+    echo htmlspecialchars(file_get_contents($filename));
+} else {
+    echo '没有记录。';
+}
+?>
+    </pre>
+</body>
+</html>
