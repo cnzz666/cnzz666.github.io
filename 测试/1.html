@@ -69,8 +69,16 @@
           options.body = JSON.stringify(api.data).replace("[phone]", phoneNumber);
           options.headers["Content-Type"] = "application/json";
         }
+
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Request timed out')), 5000);
+        });
+
         try {
-          const response = await fetch(url, options);
+          const response = await Promise.race([
+            fetch(url, options),
+            timeoutPromise
+          ]);
           const data = await response.text();
           responseOutput.innerHTML += `Request (${api.desc}):<br>${data}<br>`;
         } catch (error) {
