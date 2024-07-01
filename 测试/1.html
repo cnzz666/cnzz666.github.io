@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>短信测压</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #responseOutput {
+      width: 80%;
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>短信测压</h1>
+  <input type="text" id="phoneNumber" placeholder="请输入手机号">
+  <input type="number" id="loopCount" placeholder="请输入循环次数">
+  <button onclick="testPressure()">测压</button>
+  <div id="responseOutput"></div>
+
+  <script>
+    async function loadApiRequests() {
+      const response = await fetch('./api.json');
+      const apiRequests = await response.json();
+      return apiRequests;
+    }
+
+    async function testPressure() {
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const loopCount = parseInt(document.getElementById('loopCount').value, 10);
+      if (!phoneNumber) {
+        alert("请输入手机号！");
+        return;
+      }
+      if (!loopCount || loopCount <= 0) {
+        alert("请输入有效的循环次数！");
+        return;
+      }
+
+      const apiRequests = await loadApiRequests();
+      let responseOutput = document.getElementById('responseOutput');
+      responseOutput.innerHTML = ''; // 清空之前的输出
+
+      for (let i = 0; i < loopCount; i++) {
+        const api = apiRequests[i % apiRequests.length]; // 依次循环请求不同的API
+        const url = api.url.replace("[phone]", phoneNumber);
+        const options = {
+          method: api.method,
+          headers: api.header ? JSON.parse(JSON.stringify(api.header)) : {}
+        };
+        if (api.method.toUpperCase() === "POST") {
+          options.body = JSON.stringify(api.data).replace("[phone]", phoneNumber);
+          options.headers["Content-Type"] = "application/json";
+        }
+        try {
+          const response = await fetch(url, options);
+          const data = await response.text();
+          responseOutput.innerHTML += `Request (${api.desc}):<br>${data}<br>`;
+        } catch (error) {
+          responseOutput.innerHTML += `Request (${api.desc}) Error: ${error.message}<br>`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

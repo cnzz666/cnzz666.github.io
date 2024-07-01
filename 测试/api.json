@@ -1,0 +1,16 @@
+[
+  {
+    "desc": "用户到家",
+    "url": "https://user.daojia.com/mobile/getcode?mobile=[phone]&newVersion=1&bu=112",
+    "method": "GET",
+    "header": "",
+    "data": ""
+  },
+  {
+    "desc": "小叶子app",
+    "url": "https://dss.xiaoyezi.com/student_app/auth/validate_code?mobile=[phone]&country_code=86",
+    "method": "GET",
+    "header": "",
+    "data": ""
+  }
+]
